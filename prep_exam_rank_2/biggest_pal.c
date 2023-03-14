@@ -36,27 +36,25 @@ bool	is_pal(char *str, int start, int end)
 
 void	biggest_pal(char *str)
 {
-	int	i, j, longest_start, longest_len;
-
-	i = 0;
-	j = ft_strlen(str);
-	longest_start = 0;
-	longest_len = 0;
-	// find the length and start of longest pal
-	while (i < j)
+	int strlen = ft_strlen(str);
+	int max_len = 1, start = 0;
+	int i = 0;
+	int j;
+	while (i < strlen)
 	{
-		if (is_pal(str, i, j - 1))
+		j = i;
+		while (j < strlen)
 		{
-			if (j - i > longest_len)
+			if (is_pal(str, i, j) && j - i + 1 > max_len)
 			{
-				longest_len = j - i;
-				longest_start = i;
+				start = i;
+				max_len = j - i + 1;
 			}
-			j--;
+			j++;
 		}
 		i++;
 	}
-	print_pal(str, longest_start, longest_len + longest_start);
+	print_pal(str, start, start + max_len - 1);
 }
 
 int	main (int argc, char **argv)
