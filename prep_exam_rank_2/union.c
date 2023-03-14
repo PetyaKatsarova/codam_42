@@ -49,11 +49,6 @@ int main(int argc, char	**argv)
 	return (0);
 }
 
-
-
-
-
-
 /*
 Assignment name  : union
 Expected files   : union.c
