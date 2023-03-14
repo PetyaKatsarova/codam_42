@@ -45,7 +45,7 @@ void	biggest_pal(char *str)
 		j = i;
 		while (j < strlen)
 		{
-			if (is_pal(str, i, j) && j - i + 1 > max_len)
+			if (is_pal(str, i, j) && j - i + 1 >= max_len) // = is here to select the last pal with the same length
 			{
 				start = i;
 				max_len = j - i + 1;

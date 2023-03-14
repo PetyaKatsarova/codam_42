@@ -7,7 +7,7 @@ int	verify_char(int index, char *str, char c)
 	i = 0; 
 	while (i < index)
 	{
-		if (str[i] == c && c != ' ')
+		if (str[i] == c) // if space is not a char: add:  && c != ' '
 			return (1);
 		i++;
 	}
