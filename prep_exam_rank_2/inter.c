@@ -1,28 +1,49 @@
+#include <stdbool.h>
+#include <unistd.h>
 //1. check no doubles in str1 and str2 individually
 //2. check for doubles between str1 and str2
 //3. print them
 
-bool ft_strchar(char *str, char c)
+bool is_dub(char *str, char c, int index)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	while (i < index)
 	{
-		if (str[i] != c)
-			return (false);
+		if (str[i] == c)
+			return (true);
 		i++;
 	}
-	return (true);
+	return (false);
 }
 
 void inter(char *str1, char *str2)
 {
 	//check if doubles in str1 and str2 and then find common chars and print them
 	int	i;
+	int	j;
 
 	i = 0;
 	while (str1[i])
+	{
+		if (!is_dub(str1, str1[i], i))
+		{
+			if (str2[i] && !is_dub(str2, str2[i], i))
+			{
+				j = 0;
+				while (str2[j])
+				{
+					if (str1[i] == str2[j])
+					{
+						write(1, &str1[i], 1);
+					}
+					j++;
+				}
+			}
+		}
+		i++;
+	}
 }
 
 int main(int argc, char **argv)
