@@ -1,8 +1,5 @@
 #include <stdbool.h>
 #include <unistd.h>
-//1. check no doubles in str1 and str2 individually
-//2. check for doubles between str1 and str2
-//3. print them
 
 bool is_dub(char *str, char c, int index)
 {
