@@ -6,7 +6,7 @@
 /*   By: pkatsaro <pkatsaro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 11:24:53 by pkatsaro      #+#    #+#                 */
-/*   Updated: 2023/03/23 11:24:55 by pkatsaro      ########   odam.nl         */
+/*   Updated: 2023/03/23 14:56:09 by pkatsaro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,6 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
-
-// int	ft_strlen(char *str)
-// {
-// 	int i = 0;
-
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
-
-// void print_pal(char *str, int start, int end)
-// {
-// 	while (start <= end)
-// 	{
-// 		write(1, &str[start], 1);
-// 		start++;
-// 	}
-// 	write(1, "\n", 1);
-// }
-
-// bool	is_pal(char *str, int start, int end)
-// {
-// 	while (start < end)
-// 	{
-// 		if (str[start] != str[end])
-// 			return (false);
-// 		start++;
-// 		end--;
-// 	}
-// 	return (true); // true->is pal
-// }
-
-// void	biggest_pal(char *str)
-// {
-// 	int strlen = ft_strlen(str);
-// 	int max_len = 1, start = 0;
-// 	int i = 0;
-// 	int j;
-// 	while (i < strlen)
-// 	{
-// 		j = i;
-// 		while (j < strlen)
-// 		{
-// 			if (is_pal(str, i, j) && j - i + 1 >= max_len) // = is here to select the last pal with the same length
-// 			{
-// 				start = i;
-// 				max_len = j - i + 1;
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	print_pal(str, start, start + max_len - 1);
-// }
-
-// int	main (int argc, char **argv)
-// {
-// 	if (argc != 2)
-// 	{
-// 		write(1, "\n", 1);
-// 		return (1);
-// 	}
-// 	biggest_pal(argv[1]);
-// 	return (0);
-// }
 
 /*
 Assignment name  : biggest_pal
@@ -114,18 +49,55 @@ $>
 
 */
 
-void	biggest_pal(char	*str)
+int	ft_strlen(char *str)
 {
-	int	i, j;
+	int i = 0;
 
-	i = 0;
-	j = 0;
 	while (str[i])
+		i++;
+	return (i);
+}
+
+bool is_pal(char *str, int start, int end)
+{
+	while (start <= end)
 	{
-		
+		if (str[start++] != str[end--])
+			return (false);
+	}
+	return (true);
+}
+
+void print_it(char *str, int start, int end)
+{
+	while (start <= end)
+	{
+		write(1, &str[start], 1);
+		start++;
 	}
 }
 
+void biggest_pal(char *str)
+{
+	int i = 0;
+	int	j = 0, biggest = 1, start;
+
+	while (str[i])
+	{
+		j = i;
+		while (j < ft_strlen(str))
+		{
+			if (is_pal(str, i, j) && biggest <= j - i + 1)
+			{
+				start = i;
+				biggest = j - i + 1;
+			}
+			j++;
+		}
+		i++;	
+	}
+	print_it(str, start, biggest + start - 1);
+}
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: pkatsaro <pkatsaro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/22 13:14:37 by pkatsaro      #+#    #+#                 */
-/*   Updated: 2023/03/22 13:46:05 by pkatsaro      ########   odam.nl         */
+/*   Updated: 2023/03/23 14:10:56 by pkatsaro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,40 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-bool ft_strchr(char *str, char c)
+int	check_anagram(char *str1, char *str2)
 {
-	int i = 0;
-
-	while (str[i])
-	{
-		if (str[i++] != c)
-		{
-			printf("%c ** ", str[i]);
-			return (false);
-		}
-	}
-	return (true);
-}
-
-
-void	is_anagram(char *str1, char *str2)
-{
+	int	i = 0;
 	int	j = 0;
-	bool is_ana = true;
+	int	words[128] = {0};
 
-	while (str2[j])
+	while (str1[i])
+		words[str1[i++]]++;
+	i = 0;
+	while (str2[i])
+		words[str2[i++]]--;
+	while (j < 128)
 	{
-		if (ft_strchr(str1, str2[j]) == false)
-		{
-			printf("%c --\\", str2[j]);
-			is_ana = false;
-			break ;
-		}
+		//printf("%i -- ", words[str1[j]]);
+		if (words[str1[j]] != 0)
+			return (1);
 		j++;
 	}
-	if (is_ana)
-		write(1, "is anagram", 10);
-	else
-		write(1, "not anagram", 11);
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	
 	if (argc == 3)
-		is_anagram(argv[1], argv[2]);
-	write(1, "\n", 1);
-	return (0);
+	{
+		if (check_anagram(argv[1], argv[2]) == 1)
+			printf("these strings are not anagrams\n");
+		else
+			printf("these strings are anagrams\n");
+	}
+	return(0);
 }
-
 
 /*
 ALERT: OPTIMIZED SOLUTION REQUIRED.

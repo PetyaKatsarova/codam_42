@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	check_ana(char *str1, char *str2)
+int	check_anagram(char *str1, char *str2)
 {
 	int	i = 0;
 	int	j = 0;
@@ -22,13 +22,14 @@ int	check_ana(char *str1, char *str2)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	*str1 = "";
-	char	*str2 = "";
-
-	if (check_ana(str1, str2) == 1)
-		printf("these strings are not anagrams\n");
-	else
-		printf("these strings are anagrams\n");
+	if (argc == 3)
+	{
+		if (check_anagram(argv[1], argv[2]) == 1)
+			printf("these strings are not anagrams\n");
+		else
+			printf("these strings are anagrams\n");
+	}
+	return(0);
 }
