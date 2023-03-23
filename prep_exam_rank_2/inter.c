@@ -6,7 +6,7 @@
 /*   By: pkatsaro <pkatsaro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 11:24:59 by pkatsaro      #+#    #+#                 */
-/*   Updated: 2023/03/23 11:25:00 by pkatsaro      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:20:58 by pkatsaro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,66 +92,61 @@ $
 reference: https://github.com/Glagan/42-exam-rank-02/blob/master/inter/subject.en.txt
 */
 
-# include <stdio.h>
 
-bool is_dub(char *str, char c, int index)
-{
-	int	count;
+// int	ft_strlen(char *str)
+// {
+// 	int i = 0;
 
-	count = 0;
-	while (count < index)
-	{
-		if (str[count] == c)
-			return (true);
-		count++;
-	}
-	return (false);
-}
+// 	while (str[i])
+// 		i++;
+// 	return (i);
+// }
 
-int	ft_strlen(char *str)
-{
-	int i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-// write the chars that appear in both strs
-void	sth(char *str1, char *str2)
-{
-	int		i, j;
-	char	result[ft_strlen(str1)];
+// bool	is_dub(char *str, char c, int index)
+// {
+// 	int i = 0;
+	
+// 	while (i < index)
+// 	{
+// 		if (str[i++] == c)
+// 			return (true); // true c is in str
+// 	}
+// 	return (false); // false: c is not in str
+// }
 
-	i = 0;
-	j = 0;
-	while (str1[i] != '\0' && str2[i] != '\0')
-	{
-		if (is_dub(str2, str1[i], ft_strlen(str1)))
-		{
-			result[j] = str1[i];
-			j++;
-		}
-		i++;
-	}
-	result[j] = '\0';
-	//check for dubs in result
-	i = 0;
-	while (result[i])
-	{
-		if (!is_dub(result, result[i], i))
-		{
-			write(1, &result[i], 1);
-		}
-		i++;
-	}
-}
+// void	ft_inter(char *str1, char *str2)
+// {
+// 	int i = 0;
+// 	int	j = 0;
+// 	char both[ft_strlen(str1)];
 
-int	main(int argc, char **argv)
-{
+// 	while (str2[i] && str1[i])
+// 	{
+// 		if (is_dub(str2, str1[i], ft_strlen(str2)))
+// 		{
+// 			both[j] = str1[i];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	both[j] = '\0';
+// 	j = 0;
+// 	while (both[j])
+// 	{
+// 		if (!is_dub(both, both[j], j))
+// 		{
+// 			write(1, &both[j], 1);
+// 		}
+// 		j++;
+// 	}
+// }
 
-	if (argc == 3)
-	{
-		sth(argv[1], argv[2]);
-	}
-	write(1, "\n", 1);
-}
+// int	main(int argc, char **argv)
+// {
 
+// 	if (argc == 3)
+// 	{
+// 		ft_inter(argv[1], argv[2]);
+// 	}
+// 	write(1, "\n", 1);
+// }
