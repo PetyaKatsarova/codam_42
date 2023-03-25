@@ -6,7 +6,7 @@
 /*   By: pkatsaro <pkatsaro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 11:24:59 by pkatsaro      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:20:58 by pkatsaro      ########   odam.nl         */
+/*   Updated: 2023/03/23 18:28:55 by pkatsaro      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,36 @@ $>./inter | cat -e
 $
 reference: https://github.com/Glagan/42-exam-rank-02/blob/master/inter/subject.en.txt
 */
+
+bool is_dub(char *str, char c, int index)
+{
+	int i = 0;
+
+	while (str[i] && (i < index || i == -1))
+	{
+		if (str[i] == c)
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
+int	main(int argc, char **argv)
+{
+	int i = 0;
+	
+	if (argc == 3)
+	{
+		while(argv[1][i])
+		{
+			if(!is_dub(argv[1], argv[1][i], i) && is_dub(argv[2], argv[1][i], -1))
+				write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
 
 
 // int	ft_strlen(char *str)
