@@ -6,7 +6,7 @@
 /*   By: pkatsaro <pkatsaro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/02 13:21:44 by pkatsaro      #+#    #+#                 */
-/*   Updated: 2023/01/21 18:10:51 by pkatsaro      ########   odam.nl         */
+/*   Updated: 2024/10/19 11:26:53 by pekatsar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*join_line(int start, char **buffer_holder)
 		*buffer_holder = NULL;
 		return (result);
 	}
-	temp = ft_substr(*buffer_holder, start, BUFFER_SIZE);
+	temp = ft_substr(*buffer_holder, start, ft_strlen(*buffer_holder) - start);
 	result = ft_strndup(*buffer_holder, start);
 	free(*buffer_holder);
 	if (!result)

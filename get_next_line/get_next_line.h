@@ -6,7 +6,7 @@
 /*   By: pkatsaro <pkatsaro@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/19 14:12:30 by pkatsaro      #+#    #+#                 */
-/*   Updated: 2023/01/21 18:20:06 by pkatsaro      ########   odam.nl         */
+/*   Updated: 2024/10/19 11:28:24 by pekatsar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 4096  // Fallback value for systems without OPEN_MAX
 # endif
 
 char	*get_next_line(int fd);
